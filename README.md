@@ -239,7 +239,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat</label><textarea id="syukuran_tempat" placeholder="Alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu</label><input type="text" id="syukuran_tamu" placeholder="Yth. Bpk/Ibu/Sdr"/></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="syukuran_wa" placeholder="08xxxxxxxxxx"/></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="syukuran_wa" placeholder="628xxxxxxxxxx"/></div>
       <button class="btn-kirim" onclick="kirimUndangan('syukuran')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -424,5 +424,4 @@ function kirimUndangan(jenis){
 
 window.onload = ()=> window.scrollTo(0,0);
 </script>
-</body>
-</html>
+
