@@ -51,6 +51,17 @@ textarea{resize:vertical;min-height:80px}
 .audio-control i{color:#0F5132;font-size:22px}
 .audio-control.playing{animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+  .donasi-box{
+  background:linear-gradient(135deg,#FFF9E6 0%,#FFFEF7 100%);border:2px dashed #D4AF37;
+  border-radius:12px;padding:15px;margin:18px 0;text-align:center;
+}
+.donasi-box h3{color:#0F5132;font-size:14px;margin-bottom:10px}
+.donasi-box p{font-size:11px;color:#666;margin-bottom:12px;line-height:1.5}
+.donasi-item{display:flex;align-items:center;justify-content:space-between;background:#fff;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid #eee}
+.donasi-item img{width:70px;height:auto}
+.donasi-item span{font-weight:700;color:#0F5132;font-size:14px}
+.btn-copy{background:#D4AF37;color:#0F5132;border:none;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer}
+.btn-copy:active{transform:scale(.95)}
 </style>
 </head>
 <body>
@@ -137,6 +148,21 @@ textarea{resize:vertical;min-height:80px}
     <label>Jam</label><input id="jamHaji" placeholder="10.00 WITA">
     <label>Tempat / Alamat</label><textarea id="alamatHaji" rows="2" placeholder="Kediaman Bpk. Ahmad, Jl. Merdeka No.123"></textarea>
     <label>Atas Nama Keluarga</label><input id="keluargaHaji" placeholder="Keluarga Besar H. Ahmad">
+    <div class="donasi-box">
+  <h3><i class="fa-solid fa-hand-holding-heart"></i> Donasi Suka Rela</h3>
+  <p>Jika berkenan berbagi kebahagiaan, bisa melalui:</p>
+  <div class="donasi-item">
+    <img src="https://i.imgur.com/2RsM8zD.png" alt="DANA">
+    <span>081254693504</span>
+    <button class="btn-copy" onclick="copyNo('081254693504')">Salin</button>
+  </div>
+  <div class="donasi-item">
+    <img src="https://i.imgur.com/sQqZt2k.png" alt="ShopeePay">
+    <span>081254693504</span>
+    <button class="btn-copy" onclick="copyNo('081254693504')">Salin</button>
+  </div>
+  <p style="font-size:10px;margin-top:8px">Jazakumullah Khairan Katsiran 🤲</p>
+</div>
     <hr style="margin:18px 0;border:1px solid #eee">
     <label>Nama Tamu Undangan</label><input id="tamuHaji" placeholder="Yth. Bapak H. Hasan">
     <label>No. WhatsApp Tamu</label><input id="waHaji" placeholder="08123456789" type="tel">
@@ -319,7 +345,7 @@ Yang Insya Allah dilaksanakan:
 Merupakan kehormatan bagi kami apabila *${tamu}* berkenan hadir & memberikan doa restu.
 
 Wassalamu'alaikum Wr. Wb.
-*Keluarga Kedua Mempelai*`;
+*Keluarga Kedua Mempelai*${donasiText}`;
   }
   
   else if(jenis==='haji'){
@@ -549,6 +575,10 @@ Wassalamu'alaikum Wr. Wb.
   }
   
   window.open('https://wa.me/'+formatWA(wa)+'?text='+encodeURIComponent(pesan));
+}
+  function copyNo(no){
+  navigator.clipboard.writeText(no);
+  alert('Nomor '+no+' berhasil disalin! 🙏');
 }
 </script>
 </body>
