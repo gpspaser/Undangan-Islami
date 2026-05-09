@@ -5,27 +5,27 @@
 <meta name="theme-color" content="#0F5132">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<title>Undangan Digital</title>
+<title>Undangan Digital Islami</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
-html,body{height:10%;width:10%;overflow:hidden;position:fixed}
-#app{height:100dvh;width:100vw;display:flex;flex-direction:column;overflow:hidden}
+html,body{width:100%;background:#0F5132}
+#app{min-height:100dvh;width:100vw;display:flex;flex-direction:column}
 .header{background:#0F5132;padding:max(16px,env(safe-area-inset-top)) 12px 16px;text-align:center;color:#fff;border-bottom:2px solid #D4AF37;flex-shrink:0}
-.bismillah{font-size:18px;color:#FFD700;margin-bottom:4px;font-weight:700}
+.bismillah{font-size:20px;color:#FFD700;margin-bottom:4px;font-weight:600}
 .header h1{font-size:18px;font-weight:700;margin-bottom:2px}
 .header p{font-size:11px;opacity:.8}
-.scroll-area{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;background:#0F5132}
-.container{padding:12px 10px calc(60px + env(safe-area-inset-bottom))}
+.scroll-area{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.container{padding:12px 10px calc(60px + env(safe-area-inset-bottom));max-width:500px;margin:0 auto}
 .judul-menu{text-align:center;font-size:14px;font-weight:700;color:#FFD700;margin-bottom:12px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.menu-item{background:#FFD700;border:2px solid #D4AF37;border-radius:10px;padding:14px 6px;text-align:center;cursor:pointer}
-.menu-item:active{transform:scale(.96);background:#FFC107}
-.menu-item i{font-size:26px;margin-bottom:4px;display:block}
+.menu-item{background:#FFD700;border:2px solid #D4AF37;border-radius:10px;padding:14px 6px;text-align:center;cursor:pointer;user-select:none}
+.menu-item:active{background:#FFC107}
+.menu-item i{font-size:24px;margin-bottom:4px;display:block}
 .menu-item span{font-size:10px;font-weight:800;color:#0F5132;line-height:1.1;display:block}
-.form-page{display:none;background:#0F5132;height:100%;flex-direction:column}
+.form-page{display:none;background:#0F5132;min-height:100dvh;flex-direction:column}
 .form-page.active{display:flex}
 .form-header{background:#0F5132;color:#fff;padding:10px 12px;padding-top:calc(10px + env(safe-area-inset-top));display:flex;align-items:center;gap:8px;flex-shrink:0;border-bottom:2px solid #D4AF37}
-.form-header i{font-size:18px;cursor:pointer;padding:4px}
+.form-header i{font-size:18px;cursor:pointer;padding:5px}
 .form-header h2{font-size:14px}
 .form-content{flex:1;overflow-y:auto;padding:10px;-webkit-overflow-scrolling:touch}
 .card-form{background:#fff;border-radius:12px;padding:14px;border:2px solid #D4AF37;margin-bottom:calc(12px + env(safe-area-inset-bottom))}
@@ -90,9 +90,9 @@ hr{border:none;border-top:1px solid #eee;margin:12px 0}
     <label>Hari & Tanggal Akad</label><input id="tglNikah" placeholder="Minggu, 25 Mei 2026">
     <label>Jam Akad</label><input id="jamNikah" placeholder="09.00 WIB">
     <label>Tempat Akad & Resepsi</label><textarea id="tempatNikah" rows="2" placeholder="Kediaman Mempelai Wanita, Jl. Merdeka No.123"></textarea>
+    <div id="donasi-nikah"></div><hr>
     <label>Nama Tamu Undangan</label><input id="tamuNikah" placeholder="Yth. Bapak/Ibu/Saudara/i">
     <label>No. WhatsApp Tamu</label><input id="waNikah" placeholder="08123456789" type="tel">
-    <div id="donasi-nikah"></div><hr>
     <button class="btn-wa" onclick="kirimWA('nikah')">KIRIM VIA WHATSAPP</button>
     <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
   </div></div>
@@ -107,9 +107,9 @@ hr{border:none;border-top:1px solid #eee;margin:12px 0}
     <label>Jam</label><input id="jamHaji" placeholder="10.00 WITA">
     <label>Tempat / Alamat</label><textarea id="alamatHaji" rows="2" placeholder="Kediaman Bpk. Ahmad, Jl. Merdeka No.123"></textarea>
     <label>Atas Nama Keluarga</label><input id="keluargaHaji" placeholder="Keluarga Besar H. Ahmad">
+    <div id="donasi-haji"></div><hr>
     <label>Nama Tamu Undangan</label><input id="tamuHaji" placeholder="Yth. Bapak H. Hasan">
     <label>No. WhatsApp Tamu</label><input id="waHaji" placeholder="08123456789" type="tel">
-    <div id="donasi-haji"></div><hr>
     <button class="btn-wa" onclick="kirimWA('haji')">KIRIM VIA WHATSAPP</button>
     <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
   </div></div>
@@ -249,7 +249,7 @@ function kirimWA(jenis){
     const tamu = document.getElementById('tamuNikah').value;
     wa = document.getElementById('waNikah').value;
     if(!pria||!wanita||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nDengan memohon rahmat & ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan:\n\n*${pria}*\n& \n*${wanita}*\n\nYang Insya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${tempat}\n\nMerupakan kehormatan bagi kami apabila *${tamu}* berkenan hadir & memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga Kedua Mempelai`;
+    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nDengan memohon rahmat & ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan:\n\n*${pria}*\n& \n*${wanita}*\n\nYang Insya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${tempat}\n\nMerupakan kehormatan bagi kami apabila *${tamu}* berkenan hadir & memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga Kedua Mempelai*${donasiText}`;
   }
   else if(jenis==='haji'){
     const nama = document.getElementById('namaHaji').value;
@@ -261,7 +261,7 @@ function kirimWA(jenis){
     const tamu = document.getElementById('tamuHaji').value;
     wa = document.getElementById('waHaji').value;
     if(!nama||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nAlhamdulillah, dengan memohon rahmat Allah SWT, kami mengundang:\n*${tamu}*\n\nUntuk hadir dalam acara:\n*${jenisAcara || 'SYUKURAN HAJI'}*\n*${nama}*\n\nYang ingin melaksanakan ibadah haji ke Baitullah.\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n📖 Acara: Doa Bersama & Ramah Tamah\n\nKehadiran Bapak/Ibu adalah doa untuk kami. Semoga menjadi haji mabrur. Aamiin.\n\nWassalamu'alaikum Wr. Wb.\n*${keluarga}`;
+    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nAlhamdulillah, dengan memohon rahmat Allah SWT, kami mengundang:\n*${tamu}*\n\nUntuk hadir dalam acara:\n*${jenisAcara || 'SYUKURAN HAJI'}*\n*${nama}*\n\nYang telah selesai menunaikan ibadah haji ke Baitullah.\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n📖 Acara: Doa Bersama & Ramah Tamah\n\nKehadiran Bapak/Ibu adalah doa untuk kami. Semoga menjadi haji mabrur. Aamiin.\n\nWassalamu'alaikum Wr. Wb.\n*${keluarga}*${donasiText}`;
   }
   else if(jenis==='isra'){
     const tema = document.getElementById('temaIsra').value;
@@ -273,7 +273,7 @@ function kirimWA(jenis){
     const tamu = document.getElementById('tamuIsra').value;
     wa = document.getElementById('waIsra').value;
     if(!tema||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nDengan memohon rahmat Allah SWT, kami mengundang:\n*${tamu}*\n\nUntuk menghadiri:\n*PERINGATAN ISRA MI'RAJ NABI MUHAMMAD SAW*\n*${tema}*\n\nBersama: *${ustadz}*\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMari kita ambil hikmah dari perjalanan agung Rasulullah SAW. Kehadiran Bapak/Ibu sangat kami harapkan.\n\nWassalamu'alaikum Wr. Wb.\n*${panitia}*$`;
+    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nDengan memohon rahmat Allah SWT, kami mengundang:\n*${tamu}*\n\nUntuk menghadiri:\n*PERINGATAN ISRA MI'RAJ NABI MUHAMMAD SAW*\n*${tema}*\n\nBersama: *${ustadz}*\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMari kita ambil hikmah dari perjalanan agung Rasulullah SAW. Kehadiran Bapak/Ibu sangat kami harapkan.\n\nWassalamu'alaikum Wr. Wb.\n*${panitia}*${donasiText}`;
   }
   else if(jenis==='maulid'){
     const tema = document.getElementById('temaMaulid').value;
@@ -285,7 +285,7 @@ function kirimWA(jenis){
     const tamu = document.getElementById('tamuMaulid').value;
     wa = document.getElementById('waMaulid').value;
     if(!tema||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nاللهم صل على سيدنا محمد\n\nDengan penuh cinta kepada Rasulullah SAW, kami mengundang:\n*${tamu}*\n\nUntuk menghadiri:\n*PERINGATAN MAULID NABI MUHAMMAD SAW*\n*${tema}*\n\nBersama: *${ustadz}*\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMari kita bersholawat & meneladani akhlak Rasulullah SAW. Kehadiran Bapak/Ibu adalah keberkahan bagi kami.\n\nWassalamu'alaikum Wr. Wb.\n*${panitia}`;
+    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nاللهم صل على سيدنا محمد\n\nDengan penuh cinta kepada Rasulullah SAW, kami mengundang:\n*${tamu}*\n\nUntuk menghadiri:\n*PERINGATAN MAULID NABI MUHAMMAD SAW*\n*${tema}*\n\nBersama: *${ustadz}*\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMari kita bersholawat & meneladani akhlak Rasulullah SAW. Kehadiran Bapak/Ibu adalah keberkahan bagi kami.\n\nWassalamu'alaikum Wr. Wb.\n*${panitia}*${donasiText}`;
   }
   else if(jenis==='khitan'){
     const nama = document.getElementById('namaKhitan').value;
@@ -296,7 +296,7 @@ function kirimWA(jenis){
     const tamu = document.getElementById('tamuKhitan').value;
     wa = document.getElementById('waKhitan').value;
     if(!nama||!ortu||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nKami mengundang *${tamu}* untuk hadir di acara:\n*WALIMATUL KHITAN*\n*${nama}*\nPutra dari ${ortu}\n\nInsya Allah:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doa agar menjadi anak sholeh. Kehadiran Bapak/Ibu sangat kami harapkan.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${ortu}`;
+    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nKami mengundang *${tamu}* untuk hadir di acara:\n*WALIMATUL KHITAN*\n*${nama}*\nPutra dari ${ortu}\n\nInsya Allah:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doa agar menjadi anak sholeh. Kehadiran Bapak/Ibu sangat kami harapkan.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${ortu}*${donasiText}`;
   }
   else if(jenis==='tasmiyah'){
     const nama = document.getElementById('namaBayi').value;
@@ -307,7 +307,7 @@ function kirimWA(jenis){
     const tamu = document.getElementById('tamuTasmiyah').value;
     wa = document.getElementById('waTasmiyah').value;
     if(!nama||!ortu||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nAlhamdulillah telah lahir putra/putri kami:\n*${nama}*\nPutra/Putri dari ${ortu}\n\nKami mengundang *${tamu}* dalam acara:\n*TASMIYAH & AQIQAH*\n\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doa agar menjadi anak sholeh/sholehah, berbakti & berguna bagi agama.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${ortu}`;
+    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nAlhamdulillah telah lahir putra/putri kami:\n*${nama}*\nPutra/Putri dari ${ortu}\n\nKami mengundang *${tamu}* dalam acara:\n*TASMIYAH & AQIQAH*\n\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doa agar menjadi anak sholeh/sholehah, berbakti & berguna bagi agama.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${ortu}*${donasiText}`;
   }
   else if(jenis==='ultah'){
     const nama = document.getElementById('namaUltah').value;
@@ -318,7 +318,7 @@ function kirimWA(jenis){
     const tamu = document.getElementById('tamuUltah').value;
     wa = document.getElementById('waUltah').value;
     if(!nama||!umur||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nAlhamdulillah *${nama}* genap berusia *${umur} Tahun* 🎂\n\nMengundang *${tamu}* untuk hadir di acara:\n*SYUKURAN ULANG TAHUN*\n\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doanya agar selalu diberi kesehatan, panjang umur & jadi anak sholeh/sholehah. Aamiin.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${nama}`;
+    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nAlhamdulillah *${nama}* genap berusia *${umur} Tahun* 🎂\n\nMengundang *${tamu}* untuk hadir di acara:\n*SYUKURAN ULANG TAHUN*\n\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doanya agar selalu diberi kesehatan, panjang umur & jadi anak sholeh/sholehah. Aamiin.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${nama}*${donasiText}`;
   }
   else if(jenis==='syukuran'){
     const acara = document.getElementById('acaraSyukuran').value;
@@ -329,7 +329,7 @@ function kirimWA(jenis){
     const tamu = document.getElementById('tamuSyukuran').value;
     wa = document.getElementById('waSyukuran').value;
     if(!acara||!nama||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nDengan rasa syukur, kami *${nama}* mengundang *${tamu}* dalam acara:\n*SYUKURAN ${acara.toUpperCase()}*\n\nInsya Allah:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nKehadiran Bapak/Ibu adalah kebahagiaan bagi kami. Mohon doanya.\n\nWassalamu'alaikum Wr. Wb.\n*${nama}`;
+    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nDengan rasa syukur, kami *${nama}* mengundang *${tamu}* dalam acara:\n*SYUKURAN ${acara.toUpperCase()}*\n\nInsya Allah:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nKehadiran Bapak/Ibu adalah kebahagiaan bagi kami. Mohon doanya.\n\nWassalamu'alaikum Wr. Wb.\n*${nama}*${donasiText}`;
   }
   
   window.open('https://wa.me/'+formatWA(wa)+'?text='+encodeURIComponent(pesan));
