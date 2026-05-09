@@ -8,7 +8,7 @@
 <title>Undangan Digital</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;width:100%;overflow:hidden;position:fixed;background:#0F5132}
+html,body{height:100%;width:100%;overflow:hidden;position:fixed}
 #app{height:100dvh;width:100vw;display:flex;flex-direction:column;overflow:hidden}
 .header{background:#0F5132;padding:max(16px,env(safe-area-inset-top)) 12px 16px;text-align:center;color:#fff;border-bottom:2px solid #D4AF37;flex-shrink:0}
 .bismillah{font-size:18px;color:#FFD700;margin-bottom:4px;font-weight:700}
