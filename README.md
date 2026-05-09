@@ -1,340 +1,439 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#0F5132">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<title>Undangan Digital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Undangan Digital Islami</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;width:100%;overflow:hidden;position:fixed;background:#0F5132}
-#app{height:100dvh;width:100vw;display:flex;flex-direction:column;overflow:hidden}
-.header{background:#0F5132;padding:max(16px,env(safe-area-inset-top)) 12px 16px;text-align:center;color:#fff;border-bottom:2px solid #D4AF37;flex-shrink:0}
-.bismillah{font-size:18px;color:#FFD700;margin-bottom:4px;font-weight:700}
-.header h1{font-size:18px;font-weight:700;margin-bottom:2px}
-.header p{font-size:11px;opacity:.8}
-.scroll-area{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;background:#0F5132}
-.container{padding:12px 10px calc(60px + env(safe-area-inset-bottom))}
-.judul-menu{text-align:center;font-size:14px;font-weight:700;color:#FFD700;margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.menu-item{background:#FFD700;border:2px solid #D4AF37;border-radius:10px;padding:14px 6px;text-align:center;cursor:pointer}
-.menu-item:active{transform:scale(.96);background:#FFC107}
-.menu-item i{font-size:26px;margin-bottom:4px;display:block}
-.menu-item span{font-size:10px;font-weight:800;color:#0F5132;line-height:1.1;display:block}
-.form-page{display:none;background:#0F5132;height:100%;flex-direction:column}
-.form-page.active{display:flex}
-.form-header{background:#0F5132;color:#fff;padding:10px 12px;padding-top:calc(10px + env(safe-area-inset-top));display:flex;align-items:center;gap:8px;flex-shrink:0;border-bottom:2px solid #D4AF37}
-.form-header i{font-size:18px;cursor:pointer;padding:4px}
-.form-header h2{font-size:14px}
-.form-content{flex:1;overflow-y:auto;padding:10px;-webkit-overflow-scrolling:touch}
-.card-form{background:#fff;border-radius:12px;padding:14px;border:2px solid #D4AF37;margin-bottom:calc(12px + env(safe-area-inset-bottom))}
-label{font-size:10px;color:#555;margin:8px 0 3px;display:block;font-weight:700}
-input,textarea{width:100%;padding:11px;border:2px solid #ddd;border-radius:6px;font-size:16px;background:#fff}
-input:focus,textarea:focus{outline:none;border-color:#D4AF37;background:#FFFEF7}
-textarea{resize:vertical;min-height:60px}
-.btn-wa{background:#25D366;color:#fff;width:100%;padding:14px;border-radius:8px;font-size:14px;font-weight:800;border:none;margin-top:14px;cursor:pointer}
-.btn-wa:active{transform:scale(.98)}
-.btn-back{background:#757575;color:#fff;width:100%;padding:12px;border-radius:6px;font-size:12px;font-weight:600;border:none;margin-top:7px;cursor:pointer}
-.donasi-box{background:#FFF9E6;border:2px dashed #D4AF37;border-radius:8px;padding:10px;margin:12px 0;text-align:center}
-.donasi-box h3{color:#0F5132;font-size:12px;margin-bottom:6px}
-.donasi-box p{font-size:9px;color:#666;margin-bottom:8px;line-height:1.3}
-.donasi-item{display:flex;align-items:center;justify-content:space-between;background:#fff;padding:7px;border-radius:5px;margin-bottom:5px;border:1px solid #eee}
-.donasi-item img{width:50px;height:auto}
-.donasi-item span{font-weight:700;color:#0F5132;font-size:12px}
-.btn-copy{background:#D4AF37;color:#0F5132;border:none;padding:4px 8px;border-radius:4px;font-size:9px;font-weight:700;cursor:pointer}
-.btn-copy:active{transform:scale(.95)}
-.hide{display:none!important}
-hr{border:none;border-top:1px solid #eee;margin:12px 0}
+/* HILANGKAN ELEMENT BLOGGER */
+.navbar,.Header1,.header-outer,.tabs-outer,.footer-outer,.post-title,.blog-pager,.status-msg-wrap,.widget-content,.Attribution{display:none!important}
+body{padding:0!important;margin:0!important}
+.content-outer,.content-fauxcolumn-outer,.main-outer{padding:0!important;margin:0!important;width:100%!important}
+.main-inner,.content-inner,.post-body{padding:0!important;margin:0!important}
+
+:root {
+  --gold: #D4AF37;
+  --gold-dark: #B8941F;
+  --cream: #FAF8F3;
+  --dark: #2C2416;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow-x:hidden;background:var(--cream)}
+body{font-family:'Poppins',sans-serif;color:var(--dark)}
+
+/* FULL SCREEN APP */
+.container{max-width:100%;margin:0 auto;background:var(--cream);min-height:100vh;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;overflow-y:auto}
+
+.header{background:linear-gradient(135deg,#1A3A2E,#2C5F4F);color:#fff;padding:40px 20px 30px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20 20L80 20L50 80Z" fill="white" opacity="0.03"/><circle cx="50" cy="50" r="30" fill="none" stroke="white" stroke-width="0.5" opacity="0.05"/></svg>');animation:rotate 60s linear infinite}
+@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+.ornamen{width:80px;height:80px;margin:0 auto 15px auto;position:relative}
+.ornamen svg{width:100%;height:100%;filter:drop-shadow(0 4px 12px rgba(212,175,55,.4))}
+.bismillah{font-family:'Scheherazade New',serif;font-size:28px;color:var(--gold);margin-bottom:10px;text-shadow:0 2px 8px rgba(212,175,55,.3)}
+.header h1{font-size:26px;font-weight:700;margin-bottom:8px;letter-spacing:1px}
+.header p{font-size:13px;opacity:.9;font-weight:300}
+
+.section{padding:25px 15px 120px 15px}
+.section-title{font-size:20px;font-weight:700;margin-bottom:18px;color:var(--dark);text-align:center;position:relative;padding-bottom:12px}
+.section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:2px}
+
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:25px}
+.menu-item{background:#fff;border:3px solid var(--gold);border-radius:20px;padding:22px 12px;text-align:center;cursor:pointer;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.08);position:relative;overflow:hidden}
+.menu-item::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-dark))}
+.menu-item:hover{transform:translateY(-5px);box-shadow:0 8px 25px rgba(212,175,55,.3);border-color:var(--gold-dark)}
+.menu-item.active{background:linear-gradient(135deg,#fff,var(--cream));border-color:var(--gold-dark);box-shadow:0 8px 25px rgba(212,175,55,.4)}
+.menu-icon{font-size:38px;margin-bottom:10px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1))}
+.menu-item span{font-size:13px;font-weight:700;color:var(--dark);display:block;line-height:1.3}
+
+.form-wrap{display:none;margin-top:25px;background:#fff;border-radius:20px;padding:22px;border:3px solid var(--gold);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.form-wrap.show{display:block;animation:slideDown .4s}
+@keyframes slideDown{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}
+.form-title{font-size:18px;font-weight:700;color:var(--gold-dark);margin-bottom:18px;text-align:center;font-family:'Scheherazade New',serif}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:7px;color:var(--dark)}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;font-size:14px;font-family:'Poppins',sans-serif;background:#fafafa}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--gold);background:#fff}
+.form-group textarea{resize:vertical;min-height:85px}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-kirim{width:100%;padding:17px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 6px 20px rgba(212,175,55,.4);transition:.2s}
+.btn-kirim:active{transform:scale(.96);box-shadow:0 3px 10px rgba(212,175,55,.4)}
+
+.footer{text-align:center;padding:30px 20px 25px;font-size:12px;color:#777;background:#fff;border-top:2px solid var(--gold)}
+.footer b{color:var(--gold-dark)}
+
+@media(min-width:600px){
+  .menu-grid{grid-template-columns:repeat(4,1fr)}
+  .container{max-width:500px;box-shadow:0 0 40px rgba(0,0,0,.1)}
+}
 </style>
 </head>
 <body>
-<div id="app">
-
-<div id="halamanMenu" class="scroll-area">
+<div class="container">
   <div class="header">
-    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-    <h1>Undangan Digital Islami</h1>
+    <div class="ornamen">
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="45" stroke="var(--gold)" stroke-width="2" fill="none" opacity="0.3"/>
+        <circle cx="50" cy="50" r="35" stroke="var(--gold)" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <path d="M50 20L55 35L70 35L58 45L63 60L50 50L37 60L42 45L30 35L45 35Z" fill="var(--gold)"/>
+        <circle cx="50" cy="50" r="8" fill="#fff"/>
+        <path d="M50 15C45 15 40 18 40 25C40 32 45 35 50 35C55 35 60 32 60 25C60 18 55 15 50 15Z" fill="var(--gold)" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+    <h1>Undangan Digital</h1>
     <p>Sebarkan Kebahagiaan Dengan Mudah</p>
   </div>
-  <div class="container">
-    <div class="judul-menu">Pilih Jenis Undangan</div>
-    <div class="grid">
-      <div class="menu-item" onclick="bukaForm('nikah')"><i>💍</i><span>Pernikahan</span></div>
-      <div class="menu-item" onclick="bukaForm('haji')"><i>🕋</i><span>Haji & Umroh</span></div>
-      <div class="menu-item" onclick="bukaForm('khitan')"><i>✂️</i><span>Khitanan</span></div>
-      <div class="menu-item" onclick="bukaForm('tasmiyah')"><i>👶</i><span>Tasmiyah</span></div>
-      <div class="menu-item" onclick="bukaForm('isra')"><i>🌙</i><span>Isra Mi'raj</span></div>
-      <div class="menu-item" onclick="bukaForm('maulid')"><i>🌟</i><span>Maulid Nabi</span></div>
-      <div class="menu-item" onclick="bukaForm('ultah')"><i>🎂</i><span>Ulang Tahun</span></div>
-      <div class="menu-item" onclick="bukaForm('syukuran')"><i>🕌</i><span>Syukuran</span></div>
+
+  <div class="section">
+    <div class="section-title">Pilih Jenis Undangan</div>
+    <div class="menu-grid">
+      <div class="menu-item" onclick="pilihJenis('nikah')">
+        <div class="menu-icon">💍</div>
+        <span>Pernikahan</span>
+      </div>
+      <div class="menu-item" onclick="pilihJenis('haji')">
+        <div class="menu-icon">🕋</div>
+        <span>Haji & Umroh</span>
+      </div>
+      <div class="menu-item" onclick="pilihJenis('khitan')">
+        <div class="menu-icon">✂️</div>
+        <span>Khitanan</span>
+      </div>
+      <div class="menu-item" onclick="pilihJenis('tasmiah')">
+        <div class="menu-icon">👶</div>
+        <span>Tasmiyah</span>
+      </div>
+      <div class="menu-item" onclick="pilihJenis('ultah')">
+        <div class="menu-icon">🎂</div>
+        <span>Ulang Tahun</span>
+      </div>
+      <div class="menu-item" onclick="pilihJenis('maulid')">
+        <div class="menu-icon">🕌</div>
+        <span>Maulid Nabi</span>
+      </div>
+      <div class="menu-item" onclick="pilihJenis('isra')">
+        <div class="menu-icon">🌙</div>
+        <span>Isra Mi'raj</span>
+      </div>
+      <div class="menu-item" onclick="pilihJenis('syukuran')">
+        <div class="menu-icon">🎉</div>
+        <span>Syukuran</span>
+      </div>
     </div>
+
+    <!-- FORM PERNIKAHAN -->
+    <div class="form-wrap" id="form-nikah">
+      <div class="form-title">Undangan Pernikahan</div>
+      <div class="row-2">
+        <div class="form-group"><label>Nama Mempelai Pria</label><input type="text" id="nikah_pria" placeholder="Nama lengkap"></div>
+        <div class="form-group"><label>Nama Mempelai Wanita</label><input type="text" id="nikah_wanita" placeholder="Nama lengkap"></div>
+      </div>
+      <div class="row-2">
+        <div class="form-group"><label>Tanggal Akad</label><input type="date" id="nikah_tgl"></div>
+        <div class="form-group"><label>Jam</label><input type="time" id="nikah_jam"></div>
+      </div>
+      <div class="form-group"><label>Tempat Akad/Resepsi</label><textarea id="nikah_tempat" placeholder="Nama gedung & alamat lengkap"></textarea></div>
+      <div class="form-group"><label>Nama Tamu Undangan</label><input type="text" id="nikah_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="nikah_wa" placeholder="08xxxxxxxxxx"></div>
+      <button class="btn-kirim" onclick="kirimUndangan('nikah')">📤 Kirim Undangan via WhatsApp</button>
+    </div>
+
+    <!-- FORM HAJI UMROH -->
+    <div class="form-wrap" id="form-haji">
+      <div class="form-title">Undangan Syukuran Haji & Umroh</div>
+      <div class="form-group"><label>Nama Jamaah</label><input type="text" id="haji_nama" placeholder="Nama lengkap"></div>
+      <div class="form-group"><label>Jenis</label>
+        <select id="haji_jenis">
+          <option>Syukuran Keberangkatan Haji</option>
+          <option>Syukuran Kepulangan Haji</option>
+          <option>Syukuran Keberangkatan Umroh</option>
+          <option>Syukuran Kepulangan Umroh</option>
+        </select>
+      </div>
+      <div class="row-2">
+        <div class="form-group"><label>Tanggal</label><input type="date" id="haji_tgl"></div>
+        <div class="form-group"><label>Jam</label><input type="time" id="haji_jam"></div>
+      </div>
+      <div class="form-group"><label>Tempat</label><textarea id="haji_tempat" placeholder="Alamat lengkap"></textarea></div>
+      <div class="form-group"><label>Nama Tamu</label><input type="text" id="haji_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="haji_wa" placeholder="08xxxxxxxxxx"></div>
+      <button class="btn-kirim" onclick="kirimUndangan('haji')">📤 Kirim Undangan via WhatsApp</button>
+    </div>
+
+    <!-- FORM KHITANAN -->
+    <div class="form-wrap" id="form-khitan">
+      <div class="form-title">Undangan Khitanan</div>
+      <div class="form-group"><label>Nama Anak</label><input type="text" id="khitan_nama" placeholder="Nama lengkap anak"></div>
+      <div class="form-group"><label>Nama Ayah & Ibu</label><input type="text" id="khitan_ortu" placeholder="Bpk... & Ibu..."></div>
+      <div class="row-2">
+        <div class="form-group"><label>Tanggal</label><input type="date" id="khitan_tgl"></div>
+        <div class="form-group"><label>Jam</label><input type="time" id="khitan_jam"></div>
+      </div>
+      <div class="form-group"><label>Tempat</label><textarea id="khitan_tempat" placeholder="Alamat lengkap"></textarea></div>
+      <div class="form-group"><label>Nama Tamu</label><input type="text" id="khitan_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="khitan_wa" placeholder="08xxxxxxxxxx"></div>
+      <button class="btn-kirim" onclick="kirimUndangan('khitan')">📤 Kirim Undangan via WhatsApp</button>
+    </div>
+
+    <!-- FORM TASMIYAH -->
+    <div class="form-wrap" id="form-tasmiah">
+      <div class="form-title">Undangan Tasmiyah & Aqiqah</div>
+      <div class="form-group"><label>Nama Bayi</label><input type="text" id="tasmiah_nama" placeholder="Nama lengkap bayi"></div>
+      <div class="form-group"><label>Putra/Putri dari</label><input type="text" id="tasmiah_ortu" placeholder="Bpk... & Ibu..."></div>
+      <div class="row-2">
+        <div class="form-group"><label>Tanggal</label><input type="date" id="tasmiah_tgl"></div>
+        <div class="form-group"><label>Jam</label><input type="time" id="tasmiah_jam"></div>
+      </div>
+      <div class="form-group"><label>Tempat</label><textarea id="tasmiah_tempat" placeholder="Alamat lengkap"></textarea></div>
+      <div class="form-group"><label>Nama Tamu</label><input type="text" id="tasmiah_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="tasmiah_wa" placeholder="08xxxxxxxxxx"></div>
+      <button class="btn-kirim" onclick="kirimUndangan('tasmiah')">📤 Kirim Undangan via WhatsApp</button>
+    </div>
+
+    <!-- FORM ULANG TAHUN -->
+    <div class="form-wrap" id="form-ultah">
+      <div class="form-title">Undangan Ulang Tahun</div>
+      <div class="form-group"><label>Nama</label><input type="text" id="ultah_nama" placeholder="Nama yang berulang tahun"></div>
+      <div class="form-group"><label>Ulang Tahun ke-</label><input type="number" id="ultah_ke" placeholder="Contoh: 17"></div>
+      <div class="row-2">
+        <div class="form-group"><label>Tanggal</label><input type="date" id="ultah_tgl"></div>
+        <div class="form-group"><label>Jam</label><input type="time" id="ultah_jam"></div>
+      </div>
+      <div class="form-group"><label>Tempat</label><textarea id="ultah_tempat" placeholder="Alamat lengkap"></textarea></div>
+      <div class="form-group"><label>Nama Tamu</label><input type="text" id="ultah_tamu" placeholder="Yth. Sdr/i"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="ultah_wa" placeholder="08xxxxxxxxxx"></div>
+      <button class="btn-kirim" onclick="kirimUndangan('ultah')">📤 Kirim Undangan via WhatsApp</button>
+    </div>
+
+    <!-- FORM MAULID -->
+    <div class="form-wrap" id="form-maulid">
+      <div class="form-title">Undangan Maulid Nabi Muhammad SAW</div>
+      <div class="form-group"><label>Diselenggarakan oleh</label><input type="text" id="maulid_penyelenggara" placeholder="Nama masjid/keluarga"></div>
+      <div class="form-group"><label>Penceramah</label><input type="text" id="maulid_ustad" placeholder="Nama ustad (opsional)"></div>
+      <div class="row-2">
+        <div class="form-group"><label>Tanggal</label><input type="date" id="maulid_tgl"></div>
+        <div class="form-group"><label>Jam</label><input type="time" id="maulid_jam"></div>
+      </div>
+      <div class="form-group"><label>Tempat</label><textarea id="maulid_tempat" placeholder="Alamat lengkap"></textarea></div>
+      <div class="form-group"><label>Nama Tamu</label><input type="text" id="maulid_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="maulid_wa" placeholder="08xxxxxxxxxx"></div>
+      <button class="btn-kirim" onclick="kirimUndangan('maulid')">📤 Kirim Undangan via WhatsApp</button>
+    </div>
+
+    <!-- FORM ISRA MIRAJ -->
+    <div class="form-wrap" id="form-isra">
+      <div class="form-title">Undangan Isra Mi'raj</div>
+      <div class="form-group"><label>Diselenggarakan oleh</label><input type="text" id="isra_penyelenggara" placeholder="Nama masjid/keluarga"></div>
+      <div class="form-group"><label>Penceramah</label><input type="text" id="isra_ustad" placeholder="Nama ustad (opsional)"></div>
+      <div class="row-2">
+        <div class="form-group"><label>Tanggal</label><input type="date" id="isra_tgl"></div>
+        <div class="form-group"><label>Jam</label><input type="time" id="isra_jam"></div>
+      </div>
+      <div class="form-group"><label>Tempat</label><textarea id="isra_tempat" placeholder="Alamat lengkap"></textarea></div>
+      <div class="form-group"><label>Nama Tamu</label><input type="text" id="isra_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="isra_wa" placeholder="08xxxxxxxxxx"></div>
+      <button class="btn-kirim" onclick="kirimUndangan('isra')">📤 Kirim Undangan via WhatsApp</button>
+    </div>
+
+    <!-- FORM SYUKURAN -->
+    <div class="form-wrap" id="form-syukuran">
+      <div class="form-title">Undangan Syukuran</div>
+      <div class="form-group"><label>Acara Syukuran</label><input type="text" id="syukuran_acara" placeholder="Contoh: Rumah Baru, Kelulusan, dll"></div>
+      <div class="form-group"><label>Atas Nama</label><input type="text" id="syukuran_nama" placeholder="Nama keluarga"></div>
+      <div class="row-2">
+        <div class="form-group"><label>Tanggal</label><input type="date" id="syukuran_tgl"></div>
+        <div class="form-group"><label>Jam</label><input type="time" id="syukuran_jam"></div>
+      </div>
+      <div class="form-group"><label>Tempat</label><textarea id="syukuran_tempat" placeholder="Alamat lengkap"></textarea></div>
+      <div class="form-group"><label>Nama Tamu</label><input type="text" id="syukuran_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="syukuran_wa" placeholder="08xxxxxxxxxx"></div>
+      <button class="btn-kirim" onclick="kirimUndangan('syukuran')">📤 Kirim Undangan via WhatsApp</button>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <b>Undangan Digital Islami</b><br>
+    Barakallahu Fiikum • Mudah & Berkah
   </div>
 </div>
 
-<div id="templateDonasi" class="hide">
-  <div class="donasi-box">
-    <h3>💝 Donasi Suka Rela</h3>
-    <p>Jika berkenan berbagi kebahagiaan, bisa melalui:</p>
-    <div class="donasi-item"><img src="https://i.imgur.com/2RsM8zD.png" alt="DANA"><span>081254693504</span><button class="btn-copy" onclick="copyNo('081254693504')">Salin</button></div>
-    <div class="donasi-item"><img src="https://i.imgur.com/sQqZt2k.png" alt="ShopeePay"><span>081254693504</span><button class="btn-copy" onclick="copyNo('081254693504')">Salin</button></div>
-    <p style="font-size:8px;margin-top:5px">Jazakumullah Khairan Katsiran 🤲</p>
-  </div>
-</div>
-
-<div class="form-page" id="form-nikah">
-  <div class="form-header"><i onclick="tutupForm()">←</i><h2>Undangan Pernikahan</h2></div>
-  <div class="form-content"><div class="card-form">
-    <label>Nama Mempelai Pria</label><input id="pria" placeholder="Ahmad Fauzi">
-    <label>Nama Mempelai Wanita</label><input id="wanita" placeholder="Siti Aisyah">
-    <label>Hari & Tanggal Akad</label><input id="tglNikah" placeholder="Minggu, 25 Mei 2026">
-    <label>Jam Akad</label><input id="jamNikah" placeholder="09.00 WIB">
-    <label>Tempat Akad & Resepsi</label><textarea id="tempatNikah" rows="2" placeholder="Kediaman Mempelai Wanita, Jl. Merdeka No.123"></textarea>
-    <label>Nama Tamu Undangan</label><input id="tamuNikah" placeholder="Yth. Bapak/Ibu/Saudara/i">
-    <label>No. WhatsApp Tamu</label><input id="waNikah" placeholder="08123456789" type="tel">
-    <div id="donasi-nikah"></div><hr>
-    <button class="btn-wa" onclick="kirimWA('nikah')">KIRIM VIA WHATSAPP</button>
-    <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
-  </div></div>
-</div>
-
-<div class="form-page" id="form-haji">
-  <div class="form-header"><i onclick="tutupForm()">←</i><h2>Undangan Syukuran Haji</h2></div>
-  <div class="form-content"><div class="card-form">
-    <label>Nama Haji/Hajjah</label><input id="namaHaji" placeholder="H. Ahmad Suparman">
-    <label>Jenis Acara</label><input id="jenisHaji" placeholder="Walimatus Safar / Syukuran Haji">
-    <label>Hari & Tanggal</label><input id="tglHaji" placeholder="Minggu, 18 Mei 2026">
-    <label>Jam</label><input id="jamHaji" placeholder="10.00 WITA">
-    <label>Tempat / Alamat</label><textarea id="alamatHaji" rows="2" placeholder="Kediaman Bpk. Ahmad, Jl. Merdeka No.123"></textarea>
-    <label>Atas Nama Keluarga</label><input id="keluargaHaji" placeholder="Keluarga Besar H. Ahmad">
-    <label>Nama Tamu Undangan</label><input id="tamuHaji" placeholder="Yth. Bapak H. Hasan">
-    <label>No. WhatsApp Tamu</label><input id="waHaji" placeholder="08123456789" type="tel">
-    <div id="donasi-haji"></div><hr>
-    <button class="btn-wa" onclick="kirimWA('haji')">KIRIM VIA WHATSAPP</button>
-    <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
-  </div></div>
-</div>
-
-<div class="form-page" id="form-isra">
-  <div class="form-header"><i onclick="tutupForm()">←</i><h2>Undangan Isra Mi'raj</h2></div>
-  <div class="form-content"><div class="card-form">
-    <label>Tema Acara</label><input id="temaIsra" placeholder="Memperingati Isra Mi'raj Nabi Muhammad SAW">
-    <label>Penceramah/Ustadz</label><input id="ustadzIsra" placeholder="Ustadz Dr. H. Abdullah, Lc., MA">
-    <label>Hari & Tanggal</label><input id="tglIsra" placeholder="Kamis Malam Jumat, 26 Rajab 1447 H">
-    <label>Jam</label><input id="jamIsra" placeholder="19.30 WIB - Selesai">
-    <label>Tempat / Masjid</label><textarea id="alamatIsra" rows="2" placeholder="Masjid Agung Al-Ikhlas, Jl. Sudirman No. 1"></textarea>
-    <label>Penyelenggara</label><input id="panitiaIsra" placeholder="Remaja Masjid Al-Ikhlas / PHBI">
-    <div id="donasi-isra"></div><hr>
-    <label>Nama Tamu Undangan</label><input id="tamuIsra" placeholder="Kaum Muslimin & Muslimat">
-    <label>No. WhatsApp Tamu</label><input id="waIsra" placeholder="08123456789" type="tel">
-    <button class="btn-wa" onclick="kirimWA('isra')">KIRIM VIA WHATSAPP</button>
-    <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
-  </div></div>
-</div>
-
-<div class="form-page" id="form-maulid">
-  <div class="form-header"><i onclick="tutupForm()">←</i><h2>Undangan Maulid Nabi</h2></div>
-  <div class="form-content"><div class="card-form">
-    <label>Tema Maulid</label><input id="temaMaulid" placeholder="Meneladani Akhlak Rasulullah SAW">
-    <label>Penceramah/Ustadz</label><input id="ustadzMaulid" placeholder="KH. Ahmad Musthofa Bisri">
-    <label>Hari & Tanggal</label><input id="tglMaulid" placeholder="Senin, 12 Rabiul Awal 1447 H">
-    <label>Jam</label><input id="jamMaulid" placeholder="19.30 WIB - Selesai">
-    <label>Tempat / Masjid</label><textarea id="alamatMaulid" rows="2" placeholder="Masjid Jami' Baiturrahman"></textarea>
-    <label>Penyelenggara</label><input id="panitiaMaulid" placeholder="Takmir Masjid Baiturrahman">
-    <div id="donasi-maulid"></div><hr>
-    <label>Nama Tamu Undangan</label><input id="tamuMaulid" placeholder="Kaum Muslimin & Muslimat">
-    <label>No. WhatsApp Tamu</label><input id="waMaulid" placeholder="08123456789" type="tel">
-    <button class="btn-wa" onclick="kirimWA('maulid')">KIRIM VIA WHATSAPP</button>
-    <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
-  </div></div>
-</div>
-
-<div class="form-page" id="form-khitan">
-  <div class="form-header"><i onclick="tutupForm()">←</i><h2>Undangan Khitanan</h2></div>
-  <div class="form-content"><div class="card-form">
-    <label>Nama Anak</label><input id="namaKhitan" placeholder="Ananda Muhammad Rizki">
-    <label>Putra Dari</label><input id="ortuKhitan" placeholder="Bpk. Ahmad & Ibu Siti">
-    <label>Hari & Tanggal</label><input id="tglKhitan" placeholder="Minggu, 18 Mei 2026">
-    <label>Jam</label><input id="jamKhitan" placeholder="10.00 WITA">
-    <label>Tempat / Alamat</label><textarea id="alamatKhitan" rows="2"></textarea>
-    <div id="donasi-khitan"></div><hr>
-    <label>Nama Tamu Undangan</label><input id="tamuKhitan" placeholder="Yth. Bapak/Ibu">
-    <label>No. WhatsApp Tamu</label><input id="waKhitan" placeholder="08123456789" type="tel">
-    <button class="btn-wa" onclick="kirimWA('khitan')">KIRIM VIA WHATSAPP</button>
-    <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
-  </div></div>
-</div>
-
-<div class="form-page" id="form-tasmiyah">
-  <div class="form-header"><i onclick="tutupForm()">←</i><h2>Undangan Tasmiyah</h2></div>
-  <div class="form-content"><div class="card-form">
-    <label>Nama Bayi</label><input id="namaBayi" placeholder="Aisyah Nur Ramadhani">
-    <label>Putri/Putra Dari</label><input id="ortuBayi" placeholder="Bpk. Ahmad & Ibu Siti">
-    <label>Hari & Tanggal</label><input id="tglTasmiyah" placeholder="Minggu, 18 Mei 2026">
-    <label>Jam</label><input id="jamTasmiyah" placeholder="10.00 WITA">
-    <label>Tempat / Alamat</label><textarea id="alamatTasmiyah" rows="2"></textarea>
-    <div id="donasi-tasmiyah"></div><hr>
-    <label>Nama Tamu Undangan</label><input id="tamuTasmiyah" placeholder="Yth. Bapak/Ibu">
-    <label>No. WhatsApp Tamu</label><input id="waTasmiyah" placeholder="08123456789" type="tel">
-    <button class="btn-wa" onclick="kirimWA('tasmiyah')">KIRIM VIA WHATSAPP</button>
-    <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
-  </div></div>
-</div>
-
-<div class="form-page" id="form-ultah">
-  <div class="form-header"><i onclick="tutupForm()">←</i><h2>Undangan Ulang Tahun</h2></div>
-  <div class="form-content"><div class="card-form">
-    <label>Nama Yang Ultah</label><input id="namaUltah" placeholder="Muhammad Rizki">
-    <label>Ultah Yang Ke-</label><input id="umurUltah" placeholder="5" type="number">
-    <label>Hari & Tanggal</label><input id="tglUltah" placeholder="Minggu, 18 Mei 2026">
-    <label>Jam</label><input id="jamUltah" placeholder="16.00 WITA">
-    <label>Tempat / Alamat</label><textarea id="alamatUltah" rows="2"></textarea>
-    <div id="donasi-ultah"></div><hr>
-    <label>Nama Tamu Undangan</label><input id="tamuUltah" placeholder="Teman-teman Rizki">
-    <label>No. WhatsApp Tamu</label><input id="waUltah" placeholder="08123456789" type="tel">
-    <button class="btn-wa" onclick="kirimWA('ultah')">KIRIM VIA WHATSAPP</button>
-    <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
-  </div></div>
-</div>
-
-<div class="form-page" id="form-syukuran">
-  <div class="form-header"><i onclick="tutupForm()">←</i><h2>Undangan Syukuran</h2></div>
-  <div class="form-content"><div class="card-form">
-    <label>Acara Syukuran Apa</label><input id="acaraSyukuran" placeholder="Rumah Baru / Kelahiran / dll">
-    <label>Atas Nama</label><input id="namaSyukuran" placeholder="Keluarga Bpk. Ahmad">
-    <label>Hari & Tanggal</label><input id="tglSyukuran" placeholder="Minggu, 18 Mei 2026">
-    <label>Jam</label><input id="jamSyukuran" placeholder="10.00 WITA">
-    <label>Tempat / Alamat</label><textarea id="alamatSyukuran" rows="2"></textarea>
-    <div id="donasi-syukuran"></div><hr>
-    <label>Nama Tamu Undangan</label><input id="tamuSyukuran" placeholder="Yth. Bapak/Ibu">
-    <label>No. WhatsApp Tamu</label><input id="waSyukuran" placeholder="08123456789" type="tel">
-    <button class="btn-wa" onclick="kirimWA('syukuran')">KIRIM VIA WHATSAPP</button>
-    <button class="btn-back" onclick="tutupForm()">Kembali ke Menu</button>
-  </div></div>
-</div>
-
-</div>
 <script>
-function copyNo(no){
-  navigator.clipboard.writeText(no);
-  alert('Nomor '+no+' berhasil disalin! 🙏');
+let jenisAktif = null;
+
+function pilihJenis(jenis){
+  document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+  document.querySelectorAll('.form-wrap').forEach(f => f.classList.remove('show'));
+  event.currentTarget.classList.add('active');
+  document.getElementById(`form-${jenis}`).classList.add('show');
+  jenisAktif = jenis;
+  setTimeout(()=>{window.scrollTo({top:document.getElementById(`form-${jenis}`).offsetTop-20,behavior:'smooth'})},100);
 }
-function bukaForm(jenis){
-  document.getElementById('halamanMenu').style.display='none';
-  document.getElementById('form-'+jenis).classList.add('active');
-  document.getElementById('donasi-'+jenis).innerHTML = document.getElementById('templateDonasi').innerHTML;
+
+function formatTanggal(tgl){
+  if(!tgl) return '-';
+  const bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+  const hari = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+  const d = new Date(tgl);
+  return `${hari[d.getDay()]}, ${d.getDate()} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
 }
-function tutupForm(){
-  document.querySelectorAll('.form-page').forEach(el=>el.classList.remove('active'));
-  document.getElementById('halamanMenu').style.display='block';
-}
-function formatWA(no){
-  let nomor = no.replace(/[^0-9]/g,'');
-  if(nomor.startsWith('08')) return '62'+nomor.substring(1);
-  if(nomor.startsWith('8')) return '62'+nomor;
-  if(!nomor.startsWith('62')) return '62'+nomor;
-  return nomor;
-}
-function kirimWA(jenis){
-  let pesan = '';
+
+function kirimUndangan(jenis){
+  let pesan = `*بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم*%0A%0A`;
+  pesan += `*Assalamu'alaikum Warahmatullahi Wabarakatuh*%0A%0A`;
   let wa = '';
-  const donasiText = `\n\n💚 *Donasi Suka Rela:*\nDANA/ShopeePay: 081254693504\nJazakumullah Khairan Katsiran 🤲`;
   
   if(jenis==='nikah'){
-    const pria = document.getElementById('pria').value;
-    const wanita = document.getElementById('wanita').value;
-    const tgl = document.getElementById('tglNikah').value;
-    const jam = document.getElementById('jamNikah').value;
-    const tempat = document.getElementById('tempatNikah').value;
-    const tamu = document.getElementById('tamuNikah').value;
-    wa = document.getElementById('waNikah').value;
-    if(!pria||!wanita||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nDengan memohon rahmat & ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan:\n\n*${pria}*\n& \n*${wanita}*\n\nYang Insya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${tempat}\n\nMerupakan kehormatan bagi kami apabila *${tamu}* berkenan hadir & memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga Kedua Mempelai*`;
-  }
-  else if(jenis==='haji'){
-    const nama = document.getElementById('namaHaji').value;
-    const jenisAcara = document.getElementById('jenisHaji').value;
-    const tgl = document.getElementById('tglHaji').value;
-    const jam = document.getElementById('jamHaji').value;
-    const alamat = document.getElementById('alamatHaji').value;
-    const keluarga = document.getElementById('keluargaHaji').value;
-    const tamu = document.getElementById('tamuHaji').value;
-    wa = document.getElementById('waHaji').value;
-    if(!nama||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nAlhamdulillah, dengan memohon rahmat Allah SWT, kami mengundang:\n*${tamu}*\n\nUntuk hadir dalam acara:\n*${jenisAcara || 'SYUKURAN HAJI'}*\n*${nama}*\n\nYang ingin melaksanakan ibadah haji ke Baitullah.\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n📖 Acara: Doa Bersama & Ramah Tamah\n\nKehadiran Bapak/Ibu adalah doa untuk kami. Semoga menjadi haji mabrur. Aamiin.\n\nWassalamu'alaikum Wr. Wb.\n*${keluarga}`;
-  }
-  else if(jenis==='isra'){
-    const tema = document.getElementById('temaIsra').value;
-    const ustadz = document.getElementById('ustadzIsra').value;
-    const tgl = document.getElementById('tglIsra').value;
-    const jam = document.getElementById('jamIsra').value;
-    const alamat = document.getElementById('alamatIsra').value;
-    const panitia = document.getElementById('panitiaIsra').value;
-    const tamu = document.getElementById('tamuIsra').value;
-    wa = document.getElementById('waIsra').value;
-    if(!tema||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nDengan memohon rahmat Allah SWT, kami mengundang:\n*${tamu}*\n\nUntuk menghadiri:\n*PERINGATAN ISRA MI'RAJ NABI MUHAMMAD SAW*\n*${tema}*\n\nBersama: *${ustadz}*\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMari kita ambil hikmah dari perjalanan agung Rasulullah SAW. Kehadiran Bapak/Ibu sangat kami harapkan.\n\nWassalamu'alaikum Wr. Wb.\n*${panitia}*`;
-  }
-  else if(jenis==='maulid'){
-    const tema = document.getElementById('temaMaulid').value;
-    const ustadz = document.getElementById('ustadzMaulid').value;
-    const tgl = document.getElementById('tglMaulid').value;
-    const jam = document.getElementById('jamMaulid').value;
-    const alamat = document.getElementById('alamatMaulid').value;
-    const panitia = document.getElementById('panitiaMaulid').value;
-    const tamu = document.getElementById('tamuMaulid').value;
-    wa = document.getElementById('waMaulid').value;
-    if(!tema||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nاللهم صل على سيدنا محمد\n\nDengan penuh cinta kepada Rasulullah SAW, kami mengundang:\n*${tamu}*\n\nUntuk menghadiri:\n*PERINGATAN MAULID NABI MUHAMMAD SAW*\n*${tema}*\n\nBersama: *${ustadz}*\n\nInsya Allah dilaksanakan:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMari kita bersholawat & meneladani akhlak Rasulullah SAW. Kehadiran Bapak/Ibu adalah keberkahan bagi kami.\n\nWassalamu'alaikum Wr. Wb.\n*${panitia}*`;
-  }
-  else if(jenis==='khitan'){
-    const nama = document.getElementById('namaKhitan').value;
-    const ortu = document.getElementById('ortuKhitan').value;
-    const tgl = document.getElementById('tglKhitan').value;
-    const jam = document.getElementById('jamKhitan').value;
-    const alamat = document.getElementById('alamatKhitan').value;
-    const tamu = document.getElementById('tamuKhitan').value;
-    wa = document.getElementById('waKhitan').value;
-    if(!nama||!ortu||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nKami mengundang *${tamu}* untuk hadir di acara:\n*WALIMATUL KHITAN*\n*${nama}*\nPutra dari ${ortu}\n\nInsya Allah:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doa agar menjadi anak sholeh. Kehadiran Bapak/Ibu sangat kami harapkan.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${ortu}*${donasiText}`;
-  }
-  else if(jenis==='tasmiyah'){
-    const nama = document.getElementById('namaBayi').value;
-    const ortu = document.getElementById('ortuBayi').value;
-    const tgl = document.getElementById('tglTasmiyah').value;
-    const jam = document.getElementById('jamTasmiyah').value;
-    const alamat = document.getElementById('alamatTasmiyah').value;
-    const tamu = document.getElementById('tamuTasmiyah').value;
-    wa = document.getElementById('waTasmiyah').value;
-    if(!nama||!ortu||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nAlhamdulillah telah lahir putra/putri kami:\n*${nama}*\nPutra/Putri dari ${ortu}\n\nKami mengundang *${tamu}* dalam acara:\n*TASMIYAH & AQIQAH*\n\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doa agar menjadi anak sholeh/sholehah, berbakti & berguna bagi agama.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${ortu}*`;
-  }
-  else if(jenis==='ultah'){
-    const nama = document.getElementById('namaUltah').value;
-    const umur = document.getElementById('umurUltah').value;
-    const tgl = document.getElementById('tglUltah').value;
-    const jam = document.getElementById('jamUltah').value;
-    const alamat = document.getElementById('alamatUltah').value;
-    const tamu = document.getElementById('tamuUltah').value;
-    wa = document.getElementById('waUltah').value;
-    if(!nama||!umur||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nAlhamdulillah *${nama}* genap berusia *${umur} Tahun* 🎂\n\nMengundang *${tamu}* untuk hadir di acara:\n*SYUKURAN ULANG TAHUN*\n\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nMohon doanya agar selalu diberi kesehatan, panjang umur & jadi anak sholeh/sholehah. Aamiin.\n\nWassalamu'alaikum Wr. Wb.\n*Keluarga ${nama}*`;
-  }
-  else if(jenis==='syukuran'){
-    const acara = document.getElementById('acaraSyukuran').value;
-    const nama = document.getElementById('namaSyukuran').value;
-    const tgl = document.getElementById('tglSyukuran').value;
-    const jam = document.getElementById('jamSyukuran').value;
-    const alamat = document.getElementById('alamatSyukuran').value;
-    const tamu = document.getElementById('tamuSyukuran').value;
-    wa = document.getElementById('waSyukuran').value;
-    if(!acara||!nama||!tgl||!jam||!alamat||!tamu||!wa) return alert('Lengkapi semua data!');
-    pesan = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ\n\nAssalamu'alaikum Wr. Wb.\n\nDengan rasa syukur, kami *${nama}* mengundang *${tamu}* dalam acara:\n*SYUKURAN ${acara.toUpperCase()}*\n\nInsya Allah:\n📅 ${tgl}\n⏰ ${jam}\n📍 ${alamat}\n\nKehadiran Bapak/Ibu adalah kebahagiaan bagi kami. Mohon doanya.\n\nWassalamu'alaikum Wr. Wb.\n*${nama}*`;
+    const pria = document.getElementById('nikah_pria').value;
+    const wanita = document.getElementById('nikah_wanita').value;
+    const tgl = document.getElementById('nikah_tgl').value;
+    const jam = document.getElementById('nikah_jam').value;
+    const tempat = document.getElementById('nikah_tempat').value;
+    const tamu = document.getElementById('nikah_tamu').value;
+    wa = document.getElementById('nikah_wa').value;
+    if(!pria||!wanita||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
+    pesan += `Dengan memohon rahmat dan ridho Allah SWT,%0A`;
+    pesan += `kami bermaksud mengundang ${tamu} untuk menghadiri acara pernikahan:%0A%0A`;
+    pesan += `*${pria}*%0A&%0A*${wanita}*%0A%0A`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
+    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
+    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
   }
   
-  window.open('https://wa.me/'+formatWA(wa)+'?text='+encodeURIComponent(pesan));
+  if(jenis==='haji'){
+    const nama = document.getElementById('haji_nama').value;
+    const jenisHaji = document.getElementById('haji_jenis').value;
+    const tgl = document.getElementById('haji_tgl').value;
+    const jam = document.getElementById('haji_jam').value;
+    const tempat = document.getElementById('haji_tempat').value;
+    const tamu = document.getElementById('haji_tamu').value;
+    wa = document.getElementById('haji_wa').value;
+    if(!nama||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
+    pesan += `Dengan memohon rahmat Allah SWT,%0A`;
+    pesan += `kami mengundang ${tamu} untuk hadir dalam acara *${jenisHaji}*:%0A%0A`;
+    pesan += `*${nama}*%0A%0A`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
+    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
+    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+  }
+  
+  if(jenis==='khitan'){
+    const nama = document.getElementById('khitan_nama').value;
+    const ortu = document.getElementById('khitan_ortu').value;
+    const tgl = document.getElementById('khitan_tgl').value;
+    const jam = document.getElementById('khitan_jam').value;
+    const tempat = document.getElementById('khitan_tempat').value;
+    const tamu = document.getElementById('khitan_tamu').value;
+    wa = document.getElementById('khitan_wa').value;
+    if(!nama||!ortu||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
+    pesan += `Dengan memohon rahmat Allah SWT,%0A`;
+    pesan += `kami mengundang ${tamu} untuk menghadiri acara *Walimatul Khitan* putra kami:%0A%0A`;
+    pesan += `*${nama}*%0A`;
+    pesan += `Putra dari: ${ortu}%0A%0A`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
+    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
+    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+  }
+  
+  if(jenis==='tasmiah'){
+    const nama = document.getElementById('tasmiah_nama').value;
+    const ortu = document.getElementById('tasmiah_ortu').value;
+    const tgl = document.getElementById('tasmiah_tgl').value;
+    const jam = document.getElementById('tasmiah_jam').value;
+    const tempat = document.getElementById('tasmiah_tempat').value;
+    const tamu = document.getElementById('tasmiah_tamu').value;
+    wa = document.getElementById('tasmiah_wa').value;
+    if(!nama||!ortu||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
+    pesan += `Dengan memohon rahmat Allah SWT,%0A`;
+    pesan += `kami mengundang ${tamu} untuk menghadiri acara *Tasmiyah & Aqiqah*:%0A%0A`;
+    pesan += `*${nama}*%0A`;
+    pesan += `Putra/Putri dari: ${ortu}%0A%0A`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
+    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
+    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+  }
+  
+  if(jenis==='ultah'){
+    const nama = document.getElementById('ultah_nama').value;
+    const ke = document.getElementById('ultah_ke').value;
+    const tgl = document.getElementById('ultah_tgl').value;
+    const jam = document.getElementById('ultah_jam').value;
+    const tempat = document.getElementById('ultah_tempat').value;
+    const tamu = document.getElementById('ultah_tamu').value;
+    wa = document.getElementById('ultah_wa').value;
+    if(!nama||!ke||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
+    pesan += `Dengan senang hati mengundang ${tamu}%0A`;
+    pesan += `untuk hadir dalam acara *Ulang Tahun ke-${ke}*:%0A%0A`;
+    pesan += `*${nama}*%0A%0A`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
+    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
+    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+  }
+  
+  if(jenis==='maulid'){
+    const penyelenggara = document.getElementById('maulid_penyelenggara').value;
+    const ustad = document.getElementById('maulid_ustad').value;
+    const tgl = document.getElementById('maulid_tgl').value;
+    const jam = document.getElementById('maulid_jam').value;
+    const tempat = document.getElementById('maulid_tempat').value;
+    const tamu = document.getElementById('maulid_tamu').value;
+    wa = document.getElementById('maulid_wa').value;
+    if(!penyelenggara||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
+    pesan += `Mengharap kehadiran ${tamu}%0A`;
+    pesan += `dalam acara *Peringatan Maulid Nabi Muhammad SAW*%0A%0A`;
+    pesan += `*Diselenggarakan oleh:* ${penyelenggara}%0A`;
+    if(ustad) pesan += `*Penceramah:* ${ustad}%0A`;
+    pesan += `%0A📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
+    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
+    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+  }
+  
+  if(jenis==='isra'){
+    const penyelenggara = document.getElementById('isra_penyelenggara').value;
+    const ustad = document.getElementById('isra_ustad').value;
+    const tgl = document.getElementById('isra_tgl').value;
+    const jam = document.getElementById('isra_jam').value;
+    const tempat = document.getElementById('isra_tempat').value;
+    const tamu = document.getElementById('isra_tamu').value;
+    wa = document.getElementById('isra_wa').value;
+    if(!penyelenggara||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
+    pesan += `Mengharap kehadiran ${tamu}%0A`;
+    pesan += `dalam acara *Peringatan Isra Mi'raj Nabi Muhammad SAW*%0A%0A`;
+    pesan += `*Diselenggarakan oleh:* ${penyelenggara}%0A`;
+    if(ustad) pesan += `*Penceramah:* ${ustad}%0A`;
+    pesan += `%0A📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
+    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
+    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+  }
+  
+  if(jenis==='syukuran'){
+    const acara = document.getElementById('syukuran_acara').value;
+    const nama = document.getElementById('syukuran_nama').value;
+    const tgl = document.getElementById('syukuran_tgl').value;
+    const jam = document.getElementById('syukuran_jam').value;
+    const tempat = document.getElementById('syukuran_tempat').value;
+    const tamu = document.getElementById('syukuran_tamu').value;
+    wa = document.getElementById('syukuran_wa').value;
+    if(!acara||!nama||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
+    pesan += `Dengan memohon rahmat Allah SWT,%0A`;
+    pesan += `kami mengundang ${tamu} untuk hadir dalam acara *Syukuran ${acara}*:%0A%0A`;
+    pesan += `*Keluarga ${nama}*%0A%0A`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
+    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
+    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+  }
+  
+  pesan += `Merupakan suatu kehormatan dan kebahagiaan bagi kami%0A`;
+  pesan += `apabila ${document.getElementById(jenis+'_tamu').value} berkenan hadir%0A`;
+  pesan += `untuk memberikan do'a restu.%0A%0A`;
+  pesan += `*Wassalamu'alaikum Warahmatullahi Wabarakatuh*`;
+  
+  window.open(`https://wa.me/${wa}?text=${pesan}`,'_blank');
 }
+
+// Paksa scroll ke atas pas load
+window.onload = ()=> window.scrollTo(0,0);
 </script>
 </body>
 </html>
