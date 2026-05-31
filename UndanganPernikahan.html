@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Frame Ornamen</title>
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+:root{--primary:#d4af37;--bg:#faf7f2;--card:#fff;--text:#333;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg, #d4af37, #b8860b);color:#fff;padding:20px;text-align:center}
+.header-title{font-size:22px;font-weight:700;font-family:'Playfair Display',serif}
+
+.container{max-width:1100px;margin:0 auto;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--card);border-radius:16px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.card-title{font-size:18px;font-weight:700;margin-bottom:16px;color:#b8860b}
+
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{padding:12px 20px;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:14px}
+.btn-primary{background:linear-gradient(135deg, #d4af37, #b8860b);color:#fff}
+.btn-success{background:#25D366;color:#fff}
+
+.tema-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px}
+.tema-card{border:3px solid transparent;border-radius:12px;cursor:pointer;overflow:hidden;aspect-ratio:1;transition:0.2s;position:relative}
+.tema-card.active{border-color:#d4af37;transform:scale(1.05)}
+.tema-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);color:#fff;font-size:10px;padding:4px;text-align:center}
+
+.preview-container{background:#f5f5f5;border-radius:16px;padding:20px;display:flex;justify-content:center;align-items:center;min-height:600px}
+.preview-card{width:100%;max-width:400px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.2);position:relative}
+
+.ornament{position:absolute;z-index:3;opacity:0.9;pointer-events:none}
+.frame-ornament{position:absolute;inset:0;z-index:4;pointer-events:none}
+.frame-ornament svg{width:100%;height:100%}
+
+@media(max-width:900px){.container{grid-template-columns:1fr}.tema-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+
+<header><div class="header-title">💍 Undangan Frame Ornamen Premium</div></header>
+
+<div class="container">
+  <div>
+    <div class="card">
+      <div class="card-title">1. Pilih Tema + Frame Ornamen</div>
+      <div class="tema-grid" id="temaGrid"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. Data Mempelai</div>
+      <div class="grid-2">
+        <div class="form-group"><label>Nama Pria</label><input type="text" id="namaPria" value="Ahmad" oninput="renderPreview()"></div>
+        <div class="form-group"><label>Nama Wanita</label><input type="text" id="namaWanita" value="Siti" oninput="renderPreview()"></div>
+      </div>
+      <div class="form-group"><label>Orang Tua Pria</label><input type="text" id="ortuPria" value="Bpk. H. Ahmad & Ibu Hj. Siti" oninput="renderPreview()"></div>
+      <div class="form-group"><label>Orang Tua Wanita</label><input type="text" id="ortuWanita" value="Bpk. H. Sudirman & Ibu Hj. Aminah" oninput="renderPreview()"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3. Detail Acara</div>
+      <div class="grid-2">
+        <div class="form-group"><label>Tanggal Akad</label><input type="date" id="tanggalAkad" value="2026-12-25" onchange="renderPreview()"></div>
+        <div class="form-group"><label>Jam Akad</label><input type="time" id="jamAkad" value="08:00" onchange="renderPreview()"></div>
+      </div>
+      <div class="form-group"><label>Tempat Akad</label><textarea id="tempatAkad" rows="2" oninput="renderPreview()">Masjid Al-Ikhlas, Jakarta</textarea></div>
+    </div>
+
+    <button class="btn btn-primary" style="width:100%" onclick="renderPreview()">Update Preview</button>
+  </div>
+
+  <div>
+    <div class="card">
+      <div class="card-title">Preview Undangan</div>
+      <div class="preview-container">
+        <div class="preview-card" id="previewCard"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Export</div>
+      <button class="btn btn-primary" style="width:100%;margin-bottom:10px" onclick="exportJPEG()">📸 Download JPEG + Frame</button>
+      <button class="btn btn-success" style="width:100%" onclick="copyTextWA()">📱 Copy Teks WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<canvas id="canvas" style="display:none"></canvas>
+
+<script>
+const frameOrnamen = `<svg viewBox="0 0 400 800" preserveAspectRatio="none">
+  <!-- Frame luar -->
+  <rect x="15" y="15" width="370" height="770" fill="none" stroke="currentColor" stroke-width="3" rx="20" opacity="0.8"/>
+  <rect x="25" y="25" width="350" height="750" fill="none" stroke="currentColor" stroke-width="2" rx="18" opacity="0.6"/>
+
+  <!-- Ornamen sudut -->
+  <path d="M15,60 Q15,15 60,15" fill="none" stroke="currentColor" stroke-width="4" opacity="0.9"/>
+  <path d="M385,60 Q385,15 340,15" fill="none" stroke="currentColor" stroke-width="4" opacity="0.9"/>
+  <path d="M15,740 Q15,785 60,785" fill="none" stroke="currentColor" stroke-width="4" opacity="0.9"/>
+  <path d="M385,740 Q385,785 340,785" fill="none" stroke="currentColor" stroke-width="4" opacity="0.9"/>
+
+  <!-- Hiasan tengah atas bawah -->
+  <circle cx="200" cy="30" r="8" fill="currentColor" opacity="0.8"/>
+  <circle cx="200" cy="770" r="8" fill="currentColor" opacity="0.8"/>
+</svg>`;
+
+const temas = [
+  {id:1, nama:'Gold Elegant', bg:'linear-gradient(135deg, #f9f5f0, #f0e6d2)', accent:'#d4af37', font:'Great Vibes',
+   ornament:`<svg viewBox="0 0 200 200"><path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="none" stroke="#d4af37" stroke-width="3" opacity="0.7"/><circle cx="40" cy="60" r="5" fill="#d4af37" opacity="0.8"/></svg>`},
+
+  {id:2, nama:'Sage Green', bg:'linear-gradient(135deg, #e8f5e9, #c8e6c9)', accent:'#2e7d32', font:'Playfair Display',
+   ornament:`<svg viewBox="0 0 200 200"><path d="M15,60 Q35,40 55,60 Q35,80 15,60" fill="#2e7d32" opacity="0.6"/><path d="M25,70 Q35,65 45,70" fill="#2e7d32" opacity="0.7"/></svg>`},
+
+  {id:3, nama:'Blush Pink', bg:'linear-gradient(135deg, #fce4ec, #f8bbd0)', accent:'#c2185b', font:'Great Vibes',
+   ornament:`<svg viewBox="0 0 200 200"><circle cx="50" cy="50" r="15" fill="none" stroke="#c2185b" stroke-width="3" opacity="0.7"/><circle cx="50" cy="50" r="8" fill="#c2185b" opacity="0.6"/></svg>`},
+
+  {id:4, nama:'Royal Blue', bg:'linear-gradient(135deg, #e3f2fd, #bbdefb)', accent:'#1565c0', font:'Playfair Display',
+   ornament:`<svg viewBox="0 0 200 200"><polygon points="40,50 60,30 80,50 60,70" fill="#1565c0" opacity="0.7"/><path d="M30,80 Q60,60 90,80" fill="none" stroke="#1565c0" stroke-width="3" opacity="0.6"/></svg>`},
+
+  {id:5, nama:'Rustic Brown', bg:'linear-gradient(135deg, #efebe9, #d7ccc8)', accent:'#5d4037', font:'Great Vibes',
+   ornament:`<svg viewBox="0 0 200 200"><path d="M30,50 Q50,30 70,50 Q50,70 30,50" fill="#5d4037" opacity="0.6"/><path d="M40,60 L50,50 L60,60 L50,70 Z" fill="#5d4037" opacity="0.7"/></svg>`},
+
+  {id:6, nama:'Lavender', bg:'linear-gradient(135deg, #f3e5f5, #e1bee7)', accent:'#7b1fa2', font:'Playfair Display',
+   ornament:`<svg viewBox="0 0 200 200"><circle cx="45" cy="55" r="10" fill="#7b1fa2" opacity="0.7"/><circle cx="60" cy="65" r="8" fill="#7b1fa2" opacity="0.6"/></svg>`},
+
+  {id:7, nama:'Navy Gold', bg:'linear-gradient(135deg, #0d47a1, #1976d2)', accent:'#ffd700', font:'Great Vibes', textWhite:true,
+   ornament:`<svg viewBox="0 0 200 200"><path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="none" stroke="#ffd700" stroke-width="3" opacity="0.8"/><polygon points="45,60 55,50 65,60 55,70" fill="#ffd700" opacity="0.9"/></svg>`},
+
+  {id:8, nama:'Emerald', bg:'linear-gradient(135deg, #004d40, #00796b)', accent:'#a5d6a7', font:'Playfair Display', textWhite:true,
+   ornament:`<svg viewBox="0 0 200 200"><path d="M25,60 Q45,40 65,60 Q45,80 25,60" fill="none" stroke="#a5d6a7" stroke-width="3" opacity="0.8"/><polygon points="40,70 45,65 50,70 45,75" fill="#a5d6a7" opacity="0.9"/></svg>`},
+
+  {id:9, nama:'Peach', bg:'linear-gradient(135deg, #fff3e0, #ffe0b2)', accent:'#e65100', font:'Great Vibes',
+   ornament:`<svg viewBox="0 0 200 200"><circle cx="50" cy="50" r="15" fill="none" stroke="#e65100" stroke-width="3" opacity="0.7"/><path d="M50,50 Q55,45 60,50 Q55,55 50,50" fill="#e65100" opacity="0.7"/></svg>`},
+
+  {id:10, nama:'Minimal White', bg:'linear-gradient(135deg, #ffffff, #f5f5f5)', accent:'#424242', font:'Playfair Display',
+   ornament:`<svg viewBox="0 0 200 200"><path d="M40,70 L160,70" stroke="#424242" stroke-width="2" opacity="0.5"/><circle cx="100" cy="70" r="4" fill="#424242" opacity="0.6"/></svg>`}
+];
+
+let temaAktif = temas[0];
+
+function renderTemaGrid(){
+  document.getElementById('temaGrid').innerHTML = temas.map(t=>`
+    <div class="tema-card ${t.id===temaAktif.id?'active':''}" onclick="pilihTema(${t.id})">
+      <div style="width:100%;height:100%;background:${t.bg};position:relative;color:${t.accent}">
+        <div style="position:absolute;inset:0">${frameOrnamen}</div>
+        <div style="position:absolute;top:5px;left:5px;width:40px;height:40px;opacity:0.8">${t.ornament}</div>
+      </div>
+      <div class="tema-label">${t.nama}</div>
+    </div>
+  `).join('');
+}
+
+function pilihTema(id){
+  temaAktif = temas.find(t=>t.id==id);
+  renderTemaGrid();
+  renderPreview();
+}
+
+function formatTanggal(dateStr){
+  const date = new Date(dateStr);
+  const options = {weekday:'long', day:'numeric', month:'long', year:'numeric'};
+  return date.toLocaleDateString('id-ID', options);
+}
+
+function renderPreview(){
+  const pria = document.getElementById('namaPria').value || 'Mempelai Pria';
+  const wanita = document.getElementById('namaWanita').value || 'Mempelai Wanita';
+  const tAkad = formatTanggal(document.getElementById('tanggalAkad').value);
+  const jAkad = document.getElementById('jamAkad').value;
+  const tempatAkad = document.getElementById('tempatAkad').value;
+
+  const textColor = temaAktif.textWhite? '#fff' : temaAktif.accent;
+  const textColor2 = temaAktif.textWhite? '#eee' : '#333';
+
+  document.getElementById('previewCard').innerHTML = `
+    <div style="width:100%;height:100%;background:${temaAktif.bg};position:relative;overflow:hidden;color:${temaAktif.accent}">
+
+      <!-- FRAME ORNAMEN FULL BORDER -->
+      <div class="frame-ornament">${frameOrnamen}</div>
+
+      <!-- ORNAMEN KIRI ATAS -->
+      <div class="ornament" style="top:-20px;left:-20px;width:180px;height:180px">${temaAktif.ornament}</div>
+
+      <!-- ORNAMEN KAN BAWAH -->
+      <div class="ornament" style="bottom:-20px;right:-20px;width:180px;height:180px;transform:rotate(180deg)">${temaAktif.ornament}</div>
+
+      <div style="position:relative;z-index:5;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:50px 35px">
+        <div style="font-size:12px;color:${textColor2};letter-spacing:3px;margin-bottom:20px">THE WEDDING OF</div>
+        <div style="font-family:'${temaAktif.font}',cursive;font-size:48px;color:${textColor};line-height:1.2;margin-bottom:10px">${pria}</div>
+        <div style="font-size:24px;color:${textColor};margin:10px 0">&</div>
+        <div style="font-family:'${temaAktif.font}',cursive;font-size:48px;color:${textColor};line-height:1.2;margin-bottom:30px">${wanita}</div>
+        <div style="width:60px;height:2px;background:${textColor};margin:20px 0"></div>
+        <div style="font-size:14px;color:${textColor2};margin-bottom:8px">${tAkad}</div>
+        <div style="font-size:18px;font-weight:600;color:${textColor};margin-bottom:20px">${jAkad} WIB</div>
+        <div style="font-size:12px;color:${textColor2};max-width:250px;line-height:1.6">${tempatAkad}</div>
+        <div style="position:absolute;bottom:40px;left:0;right:0;font-size:10px;color:${temaAktif.textWhite?'#ccc':'#999'}">Bismillahirrahmanirrahim</div>
+      </div>
+    </div>
+  `;
+}
+
+function exportJPEG(){
+  const canvas = document.getElementById('canvas');
+  canvas.width = 1080;
+  canvas.height = 1920;
+  const ctx = canvas.getContext('2d');
+
+  const pria = document.getElementById('namaPria').value;
+  const wanita = document.getElementById('namaWanita').value;
+  const tAkad = formatTanggal(document.getElementById('tanggalAkad').value);
+  const jAkad = document.getElementById('jamAkad').value;
+  const tempatAkad = document.getElementById('tempatAkad').value;
+
+  // Background
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, '#f9f5f0');
+  gradient.addColorStop(1, '#f0e6d2');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // FRAME ORNAMEN di canvas
+  ctx.strokeStyle = temaAktif.accent;
+  ctx.lineWidth = 8;
+  ctx.globalAlpha = 0.8;
+  ctx.strokeRect(40, 40, canvas.width-80, canvas.height-80);
+  ctx.lineWidth = 4;
+  ctx.globalAlpha = 0.6;
+  ctx.strokeRect(60, 60, canvas.width-120, canvas.height-120);
+
+  // Ornamen sudut
+  ctx.lineWidth = 10;
+  ctx.globalAlpha = 0.9;
+  ctx.beginPath();
+  ctx.moveTo(40, 160);
+  ctx.quadraticCurveTo(40, 40, 160, 40);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(canvas.width-40, 160);
+  ctx.quadraticCurveTo(canvas.width-40, 40, canvas.width-160, 40);
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  // Text
+  ctx.fillStyle = temaAktif.accent;
+  ctx.textAlign = 'center';
+  ctx.font = '60px Poppins';
+  ctx.fillText('THE WEDDING OF', canvas.width/2, 380);
+  ctx.font = '180px "Great Vibes"';
+  ctx.fillText(pria, canvas.width/2, 650);
+  ctx.font = '80px Poppins';
+  ctx.fillText('&', canvas.width/2, 800);
+  ctx.font = '180px "Great Vibes"';
+  ctx.fillText(wanita, canvas.width/2, 1030);
+  ctx.font = '50px Poppins';
+  ctx.fillStyle = '#333';
+  ctx.fillText(tAkad, canvas.width/2, 1300);
+  ctx.font = '60px Poppins';
+  ctx.fillStyle = temaAktif.accent;
+  ctx.fillText(jAkad + ' WIB', canvas.width/2, 1400);
+  ctx.font = '40px Poppins';
+  ctx.fillStyle = '#333';
+  wrapText(ctx, tempatAkad, canvas.width/2, 1550, 800, 50);
+
+  const link = document.createElement('a');
+  link.download = `undangan-frame-${pria}-${wanita}.jpg`;
+  link.href = canvas.toDataURL('image/jpeg', 0.9);
+  link.click();
+}
+
+function wrapText(context, text, x, y, maxWidth, lineHeight){
+  const words = text.split(' ');
+  let line = '';
+  for(let n = 0; n < words.length; n++){
+    const testLine = line + words[n] + ' ';
+    const metrics = context.measureText(testLine);
+    if(metrics.width > maxWidth && n > 0){
+      context.fillText(line, x, y);
+      line = words[n] + ' ';
+      y += lineHeight;
+    } else {
+      line = testLine;
+    }
+  }
+  context.fillText(line, x, y);
+}
+
+function copyTextWA(){
+  const pria = document.getElementById('namaPria').value;
+  const wanita = document.getElementById('namaWanita').value;
+  const ortuPria = document.getElementById('ortuPria').value;
+  const ortuWanita = document.getElementById('ortuWanita').value;
+  const tAkad = formatTanggal(document.getElementById('tanggalAkad').value);
+  const jAkad = document.getElementById('jamAkad').value;
+  const tempatAkad = document.getElementById('tempatAkad').value;
+
+  const text = `💍 *UNDANGAN PERNIKAHAN* 💍\n\nAssalamu'alaikum Warahmatullahi Wabarakatuh\nDengan memohon rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan:\n\n*${pria}*\nPutra dari ${ortuPria}\n\n&\n*${wanita}*\nPutri dari ${ortuWanita}\n\n🌸 *AKAD NIKAH* 🌸\n🗓️ ${tAkad}\n⏰ ${jAkad} WIB\n📍 ${tempatAkad}\n\nMerupakan kehormatan bagi kami atas kehadiran & doa restu.\n\nWassalamu'alaikum Warahmatullahi Wabarakatuh`;
+
+  navigator.clipboard.writeText(text);
+  alert('Teks WA disalin!');
+}
+
+renderTemaGrid();
+renderPreview();
+
+const link = document.createElement('link');
+link.href = 'https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap';
+link.rel = 'stylesheet';
+document.head.appendChild(link);
+</script>
+</body>
+</html>
