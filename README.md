@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -135,7 +136,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat Akad/Resepsi</label><textarea id="nikah_tempat" placeholder="Nama gedung & alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu Undangan</label><input type="text" id="nikah_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="nikah_wa" placeholder="08xxxxxxxxxx"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="nikah_wa" placeholder="628xxxxxxxxxx"></div>
       <button class="btn-kirim" onclick="kirimUndangan('nikah')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -157,7 +158,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat</label><textarea id="haji_tempat" placeholder="Alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu</label><input type="text" id="haji_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="haji_wa" placeholder="08xxxxxxxxxx"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="haji_wa" placeholder="628xxxxxxxxxx"></div>
       <button class="btn-kirim" onclick="kirimUndangan('haji')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -172,7 +173,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat</label><textarea id="khitan_tempat" placeholder="Alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu</label><input type="text" id="khitan_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="khitan_wa" placeholder="08xxxxxxxxxx"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="khitan_wa" placeholder="628xxxxxxxxxx"></div>
       <button class="btn-kirim" onclick="kirimUndangan('khitan')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -187,7 +188,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat</label><textarea id="tasmiah_tempat" placeholder="Alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu</label><input type="text" id="tasmiah_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="tasmiah_wa" placeholder="08xxxxxxxxxx"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="tasmiah_wa" placeholdery="628xxxxxxxxxx"></div>
       <button class="btn-kirim" onclick="kirimUndangan('tasmiah')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -202,7 +203,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat</label><textarea id="ultah_tempat" placeholder="Alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu</label><input type="text" id="ultah_tamu" placeholder="Yth. Sdr/i"></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="ultah_wa" placeholder="08xxxxxxxxxx"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="ultah_wa" placeholder="628xxxxxxxxxx"></div>
       <button class="btn-kirim" onclick="kirimUndangan('ultah')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -217,7 +218,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat</label><textarea id="maulid_tempat" placeholder="Alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu</label><input type="text" id="maulid_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="maulid_wa" placeholder="08xxxxxxxxxx"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="maulid_wa" placeholder="628xxxxxxxxxx"></div>
       <button class="btn-kirim" onclick="kirimUndangan('maulid')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -232,7 +233,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat</label><textarea id="isra_tempat" placeholder="Alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu</label><input type="text" id="isra_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="isra_wa" placeholder="08xxxxxxxxxx"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="isra_wa" placeholder="628xxxxxxxxxx"></div>
       <button class="btn-kirim" onclick="kirimUndangan('isra')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -247,7 +248,7 @@ body{font-family:'Poppins',sans-serif;color:var(--dark)}
       </div>
       <div class="form-group"><label>Tempat</label><textarea id="syukuran_tempat" placeholder="Alamat lengkap"></textarea></div>
       <div class="form-group"><label>Nama Tamu</label><input type="text" id="syukuran_tamu" placeholder="Yth. Bpk/Ibu/Sdr"></div>
-      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="syukuran_wa" placeholder="08xxxxxxxxxx"></div>
+      <div class="form-group"><label>No. WhatsApp Tamu</label><input type="tel" id="syukuran_wa" placeholder="628xxxxxxxxxx"></div>
       <button class="btn-kirim" onclick="kirimUndangan('syukuran')">📤 Kirim Undangan via WhatsApp</button>
     </div>
 
@@ -280,8 +281,8 @@ function formatTanggal(tgl){
 }
 
 function kirimUndangan(jenis){
-  let pesan = `*بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم*%0A%0A`;
-  pesan += `*Assalamu'alaikum Warahmatullahi Wabarakatuh*%0A%0A`;
+  let pesan = `*بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم*\n\n`;
+  pesan += `*Assalamu'alaikum Warahmatullahi Wabarakatuh*\n\n`;
   let wa = '';
   
   if(jenis==='nikah'){
@@ -293,12 +294,15 @@ function kirimUndangan(jenis){
     const tamu = document.getElementById('nikah_tamu').value;
     wa = document.getElementById('nikah_wa').value;
     if(!pria||!wanita||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
-    pesan += `Dengan memohon rahmat dan ridho Allah SWT,%0A`;
-    pesan += `kami bermaksud mengundang ${tamu} untuk menghadiri acara pernikahan:%0A%0A`;
-    pesan += `*${pria}*%0A&%0A*${wanita}*%0A%0A`;
-    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
-    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
-    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+    
+    pesan += `Kepada Yth. *${tamu}*\n\n`;
+    pesan += `Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:\n\n`;
+    pesan += `💍 *${pria}*\n`;
+    pesan += `dengan\n`;
+    pesan += `💍 *${wanita}*\n\n`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}\n`;
+    pesan += `🕐 *Jam:* ${jam} WITA\n`;
+    pesan += `📍 *Tempat:* ${tempat}\n\n`;
   }
   
   if(jenis==='haji'){
@@ -310,12 +314,13 @@ function kirimUndangan(jenis){
     const tamu = document.getElementById('haji_tamu').value;
     wa = document.getElementById('haji_wa').value;
     if(!nama||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
-    pesan += `Dengan memohon rahmat Allah SWT,%0A`;
-    pesan += `kami mengundang ${tamu} untuk hadir dalam acara *${jenisHaji}*:%0A%0A`;
-    pesan += `*${nama}*%0A%0A`;
-    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
-    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
-    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+    
+    pesan += `Kepada Yth. *${tamu}*\n\n`;
+    pesan += `Dengan memohon rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara *${jenisHaji}*:\n\n`;
+    pesan += `🕋 *${nama}*\n\n`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}\n`;
+    pesan += `🕐 *Jam:* ${jam} WITA\n`;
+    pesan += `📍 *Tempat:* ${tempat}\n\n`;
   }
   
   if(jenis==='khitan'){
@@ -327,13 +332,14 @@ function kirimUndangan(jenis){
     const tamu = document.getElementById('khitan_tamu').value;
     wa = document.getElementById('khitan_wa').value;
     if(!nama||!ortu||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
-    pesan += `Dengan memohon rahmat Allah SWT,%0A`;
-    pesan += `kami mengundang ${tamu} untuk menghadiri acara *Walimatul Khitan* putra kami:%0A%0A`;
-    pesan += `*${nama}*%0A`;
-    pesan += `Putra dari: ${ortu}%0A%0A`;
-    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
-    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
-    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+    
+    pesan += `Kepada Yth. *${tamu}*\n\n`;
+    pesan += `Dengan memohon rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara *Walimatul Khitan* putra kami:\n\n`;
+    pesan += `✂️ *${nama}*\n`;
+    pesan += `Putra dari: ${ortu}\n\n`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}\n`;
+    pesan += `🕐 *Jam:* ${jam} WITA\n`;
+    pesan += `📍 *Tempat:* ${tempat}\n\n`;
   }
   
   if(jenis==='tasmiah'){
@@ -345,13 +351,14 @@ function kirimUndangan(jenis){
     const tamu = document.getElementById('tasmiah_tamu').value;
     wa = document.getElementById('tasmiah_wa').value;
     if(!nama||!ortu||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
-    pesan += `Dengan memohon rahmat Allah SWT,%0A`;
-    pesan += `kami mengundang ${tamu} untuk menghadiri acara *Tasmiyah & Aqiqah*:%0A%0A`;
-    pesan += `*${nama}*%0A`;
-    pesan += `Putra/Putri dari: ${ortu}%0A%0A`;
-    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
-    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
-    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+    
+    pesan += `Kepada Yth. *${tamu}*\n\n`;
+    pesan += `With seeking Allah's blessings, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara *Tasmiyah & Aqiqah*:\n\n`;
+    pesan += `👶 *${nama}*\n`;
+    pesan += `Putra/Putri dari: ${ortu}\n\n`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}\n`;
+    pesan += `🕐 *Jam:* ${jam} WITA\n`;
+    pesan += `📍 *Tempat:* ${tempat}\n\n`;
   }
   
   if(jenis==='ultah'){
@@ -363,12 +370,13 @@ function kirimUndangan(jenis){
     const tamu = document.getElementById('ultah_tamu').value;
     wa = document.getElementById('ultah_wa').value;
     if(!nama||!ke||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
-    pesan += `Dengan senang hati mengundang ${tamu}%0A`;
-    pesan += `untuk hadir dalam acara *Ulang Tahun ke-${ke}*:%0A%0A`;
-    pesan += `*${nama}*%0A%0A`;
-    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
-    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
-    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+    
+    pesan += `Kepada Yth. *${tamu}*\n\n`;
+    pesan += `Dengan senang hati kami mengundang Anda untuk hadir dalam acara *Ulang Tahun ke-${ke}*:\n\n`;
+    pesan += `🎂 *${nama}*\n\n`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}\n`;
+    pesan += `🕐 *Jam:* ${jam} WITA\n`;
+    pesan += `📍 *Tempat:* ${tempat}\n\n`;
   }
   
   if(jenis==='maulid'){
@@ -380,13 +388,14 @@ function kirimUndangan(jenis){
     const tamu = document.getElementById('maulid_tamu').value;
     wa = document.getElementById('maulid_wa').value;
     if(!penyelenggara||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
-    pesan += `Mengharap kehadiran ${tamu}%0A`;
-    pesan += `dalam acara *Peringatan Maulid Nabi Muhammad SAW*%0A%0A`;
-    pesan += `*Diselenggarakan oleh:* ${penyelenggara}%0A`;
-    if(ustad) pesan += `*Penceramah:* ${ustad}%0A`;
-    pesan += `%0A📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
-    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
-    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+    
+    pesan += `Kepada Yth. *${tamu}*\n\n`;
+    pesan += `Mengharap kehadiran Bapak/Ibu/Saudara/i dalam acara *Peringatan Maulid Nabi Muhammad SAW*:\n\n`;
+    pesan += `🏛️ *Penyelenggara:* ${penyelenggara}\n`;
+    if(ustad) pesan += `🎙️ *Penceramah:* ${ustad}\n`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}\n`;
+    pesan += `🕐 *Jam:* ${jam} WITA\n`;
+    pesan += `📍 *Tempat:* ${tempat}\n\n`;
   }
   
   if(jenis==='isra'){
@@ -398,13 +407,14 @@ function kirimUndangan(jenis){
     const tamu = document.getElementById('isra_tamu').value;
     wa = document.getElementById('isra_wa').value;
     if(!penyelenggara||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
-    pesan += `Mengharap kehadiran ${tamu}%0A`;
-    pesan += `dalam acara *Peringatan Isra Mi'raj Nabi Muhammad SAW*%0A%0A`;
-    pesan += `*Diselenggarakan oleh:* ${penyelenggara}%0A`;
-    if(ustad) pesan += `*Penceramah:* ${ustad}%0A`;
-    pesan += `%0A📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
-    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
-    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+    
+    pesan += `Kepada Yth. *${tamu}*\n\n`;
+    pesan += `Mengharap kehadiran Bapak/Ibu/Saudara/i dalam acara *Peringatan Isra Mi'raj Nabi Muhammad SAW*:\n\n`;
+    pesan += `🏛️ *Penyelenggara:* ${penyelenggara}\n`;
+    if(ustad) pesan += `🎙️ *Penceramah:* ${ustad}\n`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}\n`;
+    pesan += `🕐 *Jam:* ${jam} WITA\n`;
+    pesan += `📍 *Tempat:* ${tempat}\n\n`;
   }
   
   if(jenis==='syukuran'){
@@ -416,20 +426,21 @@ function kirimUndangan(jenis){
     const tamu = document.getElementById('syukuran_tamu').value;
     wa = document.getElementById('syukuran_wa').value;
     if(!acara||!nama||!tgl||!jam||!tempat||!tamu||!wa) return alert('Lengkapi semua data');
-    pesan += `Dengan memohon rahmat Allah SWT,%0A`;
-    pesan += `kami mengundang ${tamu} untuk hadir dalam acara *Syukuran ${acara}*:%0A%0A`;
-    pesan += `*Keluarga ${nama}*%0A%0A`;
-    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}%0A`;
-    pesan += `🕐 *Jam:* ${jam} WITA%0A`;
-    pesan += `📍 *Tempat:* ${tempat}%0A%0A`;
+    
+    pesan += `Kepada Yth. *${tamu}*\n\n`;
+    pesan += `Dengan memohon rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara *Syukuran ${acara}*:\n\n`;
+    pesan += `🎉 *Keluarga ${nama}*\n\n`;
+    pesan += `📅 *Hari/Tanggal:* ${formatTanggal(tgl)}\n`;
+    pesan += `🕐 *Jam:* ${jam} WITA\n`;
+    pesan += `📍 *Tempat:* ${tempat}\n\n`;
   }
   
-  pesan += `Merupakan suatu kehormatan dan kebahagiaan bagi kami%0A`;
-  pesan += `apabila ${document.getElementById(jenis+'_tamu').value} berkenan hadir%0A`;
-  pesan += `untuk memberikan do'a restu.%0A%0A`;
+  pesan += `Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do'a restu.\n\n`;
   pesan += `*Wassalamu'alaikum Warahmatullahi Wabarakatuh*`;
   
-  window.open(`https://wa.me/${wa}?text=${pesan}`,'_blank');
+  // Menggunakan encodeURIComponent untuk memproses seluruh karakter spesial, emoji, dan line break secara sempurna
+  const URL_Aman = `https://wa.me/${wa}?text=${encodeURIComponent(pesan)}`;
+  window.open(URL_Aman, '_blank');
 }
 
 // Paksa scroll ke atas pas load
